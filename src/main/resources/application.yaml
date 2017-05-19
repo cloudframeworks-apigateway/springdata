@@ -1,0 +1,62 @@
+server:
+  port: 8080
+  context-path: /
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: lucien
+    key-store-type: PKCS12
+    key-alias: tomcat
+
+  tomcat:
+    uri-encoding: utf-8
+
+  session:
+    timeout: 30
+spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/mytestdb?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8
+#    username: root
+#    password: root
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:apigateway
+#    url: jdbc:h2:file:./apigateway;AUTO_SERVER=TRUE
+    username: apigateway
+    password: apigateway
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+
+  h2:
+    console:
+      settings:
+        trace: true
+        web-allow-others: true
+      path: /h2-console
+      enabled: true
+
+
+  freemarker:
+    allow-request-override: true
+    cache: true
+    charset: utf-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: false
+    prefix: /ftl/
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+
+  mvc:
+    static-path-pattern: /static/**
+
+mybatis:
+  type-aliases-package: org.lucien.apigateway.models
+  mapper-locations: org.lucien.apigateway.mapper/**
+
+logging:
+  level: debug
+
+

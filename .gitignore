@@ -20,3 +20,33 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+docker/springdata
+docker/*.jar
+.idea
+src/main/resources/static/node_modules/bootstrap/fonts
+src/main/resources/static/node_modules/bootstrap/grunt
+src/main/resources/static/node_modules/bootstrap/js
+src/main/resources/static/node_modules/bootstrap/less
+src/main/resources/static/node_modules/bootstrap/*.md
+src/main/resources/static/node_modules/bootstrap/*.json
+src/main/resources/static/node_modules/bootstrap/LICENSE
+src/main/resources/static/node_modules/bootstrap/Gruntfile.js
+
+src/main/resources/static/node_modules/jquery/src
+src/main/resources/static/node_modules/jquery/external/**
+src/main/resources/static/node_modules/jquery/*.txt
+src/main/resources/static/node_modules/jquery/*.json
+src/main/resources/static/node_modules/jquery/*.md
+
+src/main/resources/static/node_modules/jquery.cookie/*.md
+src/main/resources/static/node_modules/jquery.cookie/*.yml
+src/main/resources/static/node_modules/jquery.cookie/test
+src/main/resources/static/node_modules/jquery.cookie/*.jshintrc
+src/main/resources/static/node_modules/jquery.cookie/*.npmignore
+src/main/resources/static/node_modules/jquery.cookie/*.tm_properties
+src/main/resources/static/node_modules/jquery.cookie/*.json
+src/main/resources/static/node_modules/jquery.cookie/*.txt
+src/main/resources/static/node_modules/jquery.cookie/Gruntfile.js
+
+

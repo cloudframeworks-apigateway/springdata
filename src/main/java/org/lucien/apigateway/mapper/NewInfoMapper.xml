@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lucien.apigateway.mapper.PersonMapper">
+    <!-- 若不需要自动返回主键，将useGeneratedKeys="true" keyProperty="id"去掉即可(当然如果不需要自动返回主键，直接用注解即可) -->
+    <insert id="insertNewInfo" parameterType="org.lucien.apigateway.models.NewInfo"
+            useGeneratedKeys="true" keyProperty="nid" >
+        <![CDATA[
+            INSERT INTO tl_newinfo(title, content) VALUES (
+            #{title, jdbcType=VARCHAR},
+            #{content, jdbcType=VARCHAR})
+        ]]>
+    </insert>
+
+    <update id="updateNewInfo" parameterType="org.lucien.apigateway.models.NewInfo">
+        UPDATE TABLE tl_newinfo
+        <set>
+            <if test="title != null and title != ''">
+                title=#{title},
+            </if>
+            <if test="content != null and content != ''">
+                content=#{content},
+            </if>
+        </set>
+        <where>
+            nid=#{nid}
+        </where>
+    </update>
+
+    <select id="selectNewInfoList" parameterType="string" resultType="org.lucien.apigateway.models.NewInfo">
+        SELECT nid, title, content
+        FROM tl_newinfo
+        <where>
+            <if test="title != null and title != ''">
+                title LIKE #{key}
+            </if>
+        </where>
+    </select>
+
+</mapper>

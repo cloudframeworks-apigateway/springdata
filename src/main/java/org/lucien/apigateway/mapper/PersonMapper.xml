@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lucien.apigateway.mapper.PersonMapper">
+    <insert id="insertPerson" parameterType="org.lucien.apigateway.models.Person">
+        <![CDATA[
+            INSERT INTO tb_person(pid, name, age) VALUES (
+            #{pid, jdbcType=int},
+            #{name, jdbcType=VARCHAR},
+            #{age, jdbcType=int})
+        ]]>
+    </insert>
+
+    <update id="updatePerson" parameterType="org.lucien.apigateway.models.Person">
+        UPDATE TABLE tb_person
+        <set>
+            <if test="name != null and name != ''">
+                name=#{name},
+            </if>
+            <if test="age != null and age != ''">
+                age=#{age},
+            </if>
+        </set>
+        <where>
+            pid=#{pid}
+        </where>
+    </update>
+
+    <select id="selectPersonList" parameterType="string" resultType="org.lucien.apigateway.models.Person">
+        SELECT pid, name, age
+        FROM tb_person
+        <where>
+            <if test="title != null and title != ''">
+                name LIKE #{key}
+            </if>
+        </where>
+    </select>
+
+</mapper>

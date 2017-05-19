@@ -1,0 +1,12 @@
+FROM openjdk:alpine
+MAINTAINER lucienchu<lucienchu@hotmail.com>
+
+WORKDIR /app
+
+COPY springdata-1.0.1-SNAPSHOT.jar /app
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "springdata-1.0.1-SNAPSHOT.jar"]
+
+
